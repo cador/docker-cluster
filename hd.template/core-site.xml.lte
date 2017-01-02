@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://[halogical]</value>
+		<description>这里的kedian为HA集群的逻辑名，与hdfs-site.xml中的dfs.nameservices配置一致</description>
+    </property>
+
+    <property>
+        <name>hadoop.tmp.dir</name>
+        <value>/home/hadoop/tmp</value>
+		<description>这里的路径默认是NameNode/DataNode/JournalNode等存放数据的公共目录。用户也可以单独指定每类数据的存放目录。目录结构需要提前创建好。</description>
+    </property>
+<property>
+        <name>hadoop.logfile.count</name>
+        <value>10</value>
+</property>
+<property>
+        <name>io.file.buffer.size</name>
+        <value>[iobuffersize]</value>
+</property>
+    <property>
+        <name>ha.zookeeper.quorum</name>
+        <value>[zklist]</value>
+		<description>这里是ZK集群中各节点的地址和端口，注意，数量一定是奇数，而且与zoo.cfg中配置的相同。</description>
+    </property>
+</configuration>
